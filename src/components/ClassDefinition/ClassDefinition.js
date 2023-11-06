@@ -3,7 +3,7 @@ import React from 'react';
 const ClassDefinition = () => {
   return (
     <div>
-      <h1>Class Definition</h1>
+      <h1>Classes</h1>
     </div>
   );
 }
