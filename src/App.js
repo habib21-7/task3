@@ -13,31 +13,32 @@ import './App.css';
 import Layout from './components/LayoutCustom/Layout';
 import DashboardIcon from '@rsuite/icons/legacy/Dashboard';
 
-const headerStyles = {
-  padding: 18,
-  fontSize: 16,
-  height: 56,
-  background: '#2F4F4F',
-  color: ' #fff',
-  whiteSpace: 'nowrap',
-  overflow: 'hidden'
-};
-
-const NavToggle = ({ expand, onChange }) => {
-  return (
-    <Navbar appearance="subtle" className="nav-toggle">
-      <Nav pullRight>
-        <Nav.Item onClick={onChange} style={{ width: 56, textAlign: 'center' }}>
-          {expand ? <AngleLeftIcon /> : <AngleRightIcon />}
-        </Nav.Item>
-      </Nav>
-    </Navbar>
-  );
-};
-
 const App = () => {
 
+  const headerStyles = {
+    padding: 18,
+    fontSize: 16,
+    height: 56,
+    background: '#2F4F4F',
+    color: ' #fff',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden'
+  };
+  
+  const NavToggle = ({ expand, onChange }) => {
+    return (
+      <Navbar appearance="subtle" className="nav-toggle">
+        <Nav pullRight>
+          <Nav.Item onClick={onChange} style={{ width: 56, textAlign: 'center' }}>
+            {expand ? <AngleLeftIcon /> : <AngleRightIcon />}
+          </Nav.Item>
+        </Nav>
+      </Navbar>
+    );
+  };
+
   const navigate = useNavigate();
+
   const [expand, setExpand] = React.useState(true);
   return (
     <div className="show-fake-browser sidebar-page">
@@ -49,7 +50,7 @@ const App = () => {
         >
           <Sidenav.Header>
             <div style={headerStyles}>
-              <span style={{ marginLeft: 12 }}> Task3</span>
+              <span style={{ marginLeft: 12 }}>Student Data Hub</span>
             </div>
           </Sidenav.Header>
           <Sidenav expanded={expand} defaultOpenKeys={['3']} appearance="subtle">

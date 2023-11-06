@@ -5,7 +5,7 @@ import { Panel } from 'rsuite';
 const Layout = ()=> {
     
     const panelStyle = {
-        margin: '50px',
+        margin: '55px',
       }
 
 
