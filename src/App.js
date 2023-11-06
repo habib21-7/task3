@@ -10,7 +10,7 @@ import AngleRightIcon from '@rsuite/icons/legacy/AngleRight';
 import GroupIcon from '@rsuite/icons/legacy/Group';
 import PieChartIcon from '@rsuite/icons/PieChart';
 import './App.css';
-import Layout from './components/Layout';
+import Layout from './components/LayoutCustom/Layout';
 import DashboardIcon from '@rsuite/icons/legacy/Dashboard';
 
 const headerStyles = {
