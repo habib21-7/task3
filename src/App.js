@@ -70,7 +70,6 @@ const App = () => {
           </Sidenav>
           <NavToggle expand={expand} onChange={() => setExpand(!expand)} />
         </Sidebar>
-
         <Container>   
           <Header ></Header>
           <Content>
