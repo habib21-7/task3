@@ -106,7 +106,7 @@ const App = () => {
           <Content>
             <Routes>
               <Route path='/layout' element={<Layout />}>
-                <Route path='homepage' element={<HomePage createdClasses={handleCreateClass} classesNumber={classesNum}/>} />
+                <Route path='homepage' element={<HomePage createdClasses={handleCreateClass} classesNumber={classesNum} studentsNumber={studentsNum}/>}/>
                 <Route path='classes' element={<ClassDefinition createdClasses={handleCreateClass} classesNumber={classesNum} classes={classes}/>} />
                 <Route path='students' element={<StudentList createdStudents={handleCreateStudent} studentsNumber={studentsNum} students={students} classes={classes}/>} />
               </Route>
