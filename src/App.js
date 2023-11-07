@@ -39,7 +39,7 @@ const App = () => {
         name: newStudent.name,
         dob:newStudent.dob,
         gender:newStudent.gender,
-        classess:newStudent.classes
+        classes:newStudent.classes
       };
       setStudents([...students, newStudentObj]);
       setStudentsNum(studentsNum + 1);

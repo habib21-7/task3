@@ -10,6 +10,7 @@ const ClassDefinition = (props) => {
   const handleAddClass = () => {
     if (newClass) {
       props.createdClasses(newClass);
+      setNewClass("");
     }
   }
 
