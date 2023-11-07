@@ -35,10 +35,14 @@ const App = () => {
   const handleCreateStudent = (newStudent) => {
     if (newStudent) {
       const newStudentObj = { 
-        id: students.length + 1, name: newStudent 
+        id: students.length + 1, 
+        name: newStudent.name,
+        dob:newStudent.dob,
+        gender:newStudent.gender,
+        classess:newStudent.classes
       };
       setStudents([...students, newStudentObj]);
-      setClassesNum(studentsNum + 1);
+      setStudentsNum(studentsNum + 1);
     };
   }
 
@@ -104,7 +108,7 @@ const App = () => {
               <Route path='/layout' element={<Layout />}>
                 <Route path='homepage' element={<HomePage createdClasses={handleCreateClass} classesNumber={classesNum}/>} />
                 <Route path='classes' element={<ClassDefinition createdClasses={handleCreateClass} classesNumber={classesNum} classes={classes}/>} />
-                <Route path='students' element={<StudentList createdStudents={handleCreateStudent}/>} />
+                <Route path='students' element={<StudentList createdStudents={handleCreateStudent} studentsNumber={studentsNum} students={students} classes={classes}/>} />
               </Route>
             </Routes>
           </Content>
