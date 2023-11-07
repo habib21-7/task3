@@ -1,19 +1,46 @@
 import React,{useState} from 'react';
 import {Routes, Route, useNavigate } from 'react-router-dom';
 import { Container, Sidebar, Sidenav, Navbar, Nav,Header,Content} from 'rsuite';
+import 'rsuite/dist/rsuite.min.css';
 import HomePage from './components/HomePage/HomePage';
 import ClassDefinition from './components/ClassDefinition/ClassDefinition';
 import StudentList from './components/StudentList/StudentList';
-import StudentDetail from './components/StudentDetail/StudentDetail';
 import AngleLeftIcon from '@rsuite/icons/legacy/AngleLeft';
 import AngleRightIcon from '@rsuite/icons/legacy/AngleRight';
 import GroupIcon from '@rsuite/icons/legacy/Group';
 import PieChartIcon from '@rsuite/icons/PieChart';
-import './App.css';
 import Layout from './components/LayoutCustom/Layout';
 import DashboardIcon from '@rsuite/icons/legacy/Dashboard';
+import './App.css';
 
 const App = () => {
+
+  const [classesNum, setClassesNum] = useState(0);
+  const [studentsNum, setStudentsNum] = useState(0);
+
+  const [classes, setClasses] = useState([]);
+  const [students, setStudents] = useState([]);
+
+
+  const handleCreateClass = (newClass) => {
+    if (newClass) {
+      const newClassObj = { 
+        id: classes.length + 1, name: newClass 
+      };
+      setClasses([...classes, newClassObj]);
+      setClassesNum(classesNum + 1);
+    }
+  };
+
+  const handleCreateStudent = (newStudent) => {
+    if (newStudent) {
+      const newStudentObj = { 
+        id: students.length + 1, name: newStudent 
+      };
+      setStudents([...students, newStudentObj]);
+      setClassesNum(studentsNum + 1);
+    };
+  }
 
   const headerStyles = {
     padding: 18,
@@ -75,9 +102,9 @@ const App = () => {
           <Content>
             <Routes>
               <Route path='/layout' element={<Layout />}>
-                <Route path='homepage' element={<HomePage />} />
-                <Route path='classes' element={<ClassDefinition />} />
-                <Route path='students' element={<StudentList />} />
+                <Route path='homepage' element={<HomePage createdClasses={handleCreateClass} classesNumber={classesNum}/>} />
+                <Route path='classes' element={<ClassDefinition createdClasses={handleCreateClass} classesNumber={classesNum} classes={classes}/>} />
+                <Route path='students' element={<StudentList createdStudents={handleCreateStudent}/>} />
               </Route>
             </Routes>
           </Content>
