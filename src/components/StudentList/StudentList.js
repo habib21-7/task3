@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { Input, Button, Checkbox, Table, Panel, Form } from 'rsuite';
+import { Input, Button, Checkbox, Table, Panel, Form, DatePicker,SelectPicker } from 'rsuite';
 
 const StudentList = (props) => {
-  
   const [studentName, setStudentName] = useState('');
-  const [studentDOB, setStudentDOB] = useState('');
+  const [studentDOB, setStudentDOB] = useState(null);
   const [studentGender, setStudentGender] = useState('');
   const [selectedClasses, setSelectedClasses] = useState([]);
 
@@ -12,7 +11,7 @@ const StudentList = (props) => {
     if (studentName && studentDOB && studentGender) {
       const newStudent = {
         name: studentName,
-        dob: studentDOB,
+        dob: studentDOB.toLocaleDateString(), 
         gender: studentGender,
         classes: selectedClasses,
       };
@@ -20,7 +19,7 @@ const StudentList = (props) => {
       props.createdStudents(newStudent);
 
       setStudentName('');
-      setStudentDOB('');
+      setStudentDOB(null); 
       setStudentGender('');
       setSelectedClasses([]);
     }
@@ -40,9 +39,9 @@ const StudentList = (props) => {
       <Table
         data={props.students}
         virtualized={true}
-        height={400} // Adjust the height as needed
+        height={400}
         autoHeight={true}
-        style={{ width: '100%' }} // Set the width to 100%
+        style={{ width: '100%' }}
       >
         <Table.Column width={200}>
           <Table.HeaderCell>Name</Table.HeaderCell>
@@ -57,34 +56,39 @@ const StudentList = (props) => {
           <Table.Cell dataKey="gender" />
         </Table.Column>
         <Table.Column width={300}>
-        <Table.HeaderCell>Classes</Table.HeaderCell>
-        <Table.Cell dataKey="classes">
-          {(rowData) => {
-            return rowData.classes ? rowData.classes.join(', ') : 'No classes selected';
-          }}
-        </Table.Cell>
-      </Table.Column>
+          <Table.HeaderCell>Classes</Table.HeaderCell>
+          <Table.Cell dataKey="classes">
+            {(rowData) => {
+              return rowData.classes ? rowData.classes.join(', ') : 'No classes selected';
+            }}
+          </Table.Cell>
+        </Table.Column>
       </Table>
       <Panel>
         <Form formValue={{ studentName, studentDOB, studentGender }}>
-          <div style={{display:'flex'}}>
+          <div style={{ display: 'flex' }}>
             <Input
               name="studentName"
               placeholder="Name"
               onChange={(value) => setStudentName(value)}
-              style={{ width: "20%" }}
+              style={{ width: '20%' }}
             />
-            <Input
+            <DatePicker
               name="studentDOB"
               placeholder="Date of Birth"
+              format="yyyy-MM-dd"
+              value={studentDOB}
               onChange={(value) => setStudentDOB(value)}
-              style={{ width: "20%" }}
+              style={{ width: '20%' }}
+              cleanable={false}
             />
-            <Input
+            <SelectPicker
               name="studentGender"
               placeholder="Gender"
+              data={[{ value: 'Male', label: 'Male' }, { value: 'Female', label: 'Female' }]}
+              value={studentGender}
               onChange={(value) => setStudentGender(value)}
-              style={{ width: "20%" }}
+              style={{ width: '20%' }}
             />
           </div>
           <div>
@@ -99,16 +103,13 @@ const StudentList = (props) => {
                   <Checkbox
                     value={classInfo.name}
                     checked={selectedClasses.includes(classInfo.name)}
-                    onChange={(checked) =>
-                      handleClassCheckboxChange(classInfo.name, checked)
-                    }
+                    onChange={(checked) => handleClassCheckboxChange(classInfo.name, checked)}
                   />
                   <span style={{ marginLeft: '5px' }}>{classInfo.name}</span>
                 </label>
               ))}
             </div>
           </div>
-
           <div>
             <Button appearance="primary" onClick={handleCreateStudent}>
               Add Student
