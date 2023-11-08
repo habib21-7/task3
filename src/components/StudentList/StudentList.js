@@ -7,6 +7,7 @@ const StudentList = (props) => {
   const [studentGender, setStudentGender] = useState('');
   const [selectedClasses, setSelectedClasses] = useState([]);
 
+
   const handleCreateStudent = () => {
     if (studentName && studentDOB && studentGender) {
       const newStudent = {
@@ -22,6 +23,7 @@ const StudentList = (props) => {
       setStudentDOB(null); 
       setStudentGender('');
       setSelectedClasses([]);
+      setSelectedStudent(newStudent);
     }
   };
 
