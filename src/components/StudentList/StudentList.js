@@ -23,7 +23,6 @@ const StudentList = (props) => {
       setStudentDOB(null); 
       setStudentGender('');
       setSelectedClasses([]);
-      setSelectedStudent(newStudent);
     }
   };
 
