@@ -15,37 +15,6 @@ import './App.css';
 
 const App = () => {
 
-  //const [classesNum, setClassesNum] = useState(0);
-  const [studentsNum, setStudentsNum] = useState(0);
-
-  //const [classes, setClasses] = useState([]);
-  const [students, setStudents] = useState([]);
-
-
-  // const handleCreateClass = (newClass) => {
-  //   if (newClass) {
-  //     const newClassObj = { 
-  //       id: classes.length + 1, name: newClass 
-  //     };
-  //     setClasses([...classes, newClassObj]);
-  //     setClassesNum(classesNum + 1);
-  //   }
-  // };
-
-  const handleCreateStudent = (newStudent) => {
-    if (newStudent) {
-      const newStudentObj = { 
-        id: students.length + 1, 
-        name: newStudent.name,
-        dob:newStudent.dob,
-        gender:newStudent.gender,
-        classes:newStudent.classes
-      };
-      setStudents([...students, newStudentObj]);
-      setStudentsNum(studentsNum + 1);
-    };
-  }
-
   const headerStyles = {
     padding: 18,
     fontSize: 16,
@@ -106,9 +75,9 @@ const App = () => {
           <Content>
             <Routes>
               <Route path='/layout' element={<Layout />}>
-                <Route path='homepage' element={<HomePage  studentsNumber={studentsNum}/>}/>
+                <Route path='homepage' element={<HomePage />}/>
                 <Route path='classes' element={<ClassDefinition />} />
-                <Route path='students' element={<StudentList createdStudents={handleCreateStudent} studentsNumber={studentsNum} students={students} />} />
+                <Route path='students' element={<StudentList />} />
               </Route>
             </Routes>
           </Content>
