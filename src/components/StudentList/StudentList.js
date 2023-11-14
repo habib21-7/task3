@@ -5,7 +5,7 @@ const StudentList = (props) => {
   const [studentName, setStudentName] = useState('');
   const [studentDOB, setStudentDOB] = useState(null);
   const [studentGender, setStudentGender] = useState('');
-  const [selectedClasses, setSelectedClasses] = useState([]);
+ // const [selectedClasses, setSelectedClasses] = useState([]);
 
 
   const handleCreateStudent = () => {
@@ -14,7 +14,7 @@ const StudentList = (props) => {
         name: studentName,
         dob: studentDOB.toLocaleDateString(), 
         gender: studentGender,
-        classes: selectedClasses,
+        //classes: selectedClasses,
       };
 
       props.createdStudents(newStudent);
@@ -22,17 +22,17 @@ const StudentList = (props) => {
       setStudentName('');
       setStudentDOB(null); 
       setStudentGender('');
-      setSelectedClasses([]);
+      //setSelectedClasses([]);
     }
   };
 
-  const handleClassCheckboxChange = (value, checked) => {
-    if (checked) {
-      setSelectedClasses([...selectedClasses, value]);
-    } else {
-      setSelectedClasses(selectedClasses.filter((name) => name !== value));
-    }
-  };
+  // const handleClassCheckboxChange = (value, checked) => {
+  //   if (checked) {
+  //     setSelectedClasses([...selectedClasses, value]);
+  //   } else {
+  //     setSelectedClasses(selectedClasses.filter((name) => name !== value));
+  //   }
+  // };
 
   return (
     <div>
@@ -56,14 +56,14 @@ const StudentList = (props) => {
           <Table.HeaderCell>Gender</Table.HeaderCell>
           <Table.Cell dataKey="gender" />
         </Table.Column>
-        <Table.Column width={300}>
+        {/* <Table.Column width={300}>
           <Table.HeaderCell>Classes</Table.HeaderCell>
           <Table.Cell dataKey="classes">
             {(rowData) => {
               return rowData.classes ? rowData.classes.join(', ') : 'No classes selected';
             }}
           </Table.Cell>
-        </Table.Column>
+        </Table.Column> */}
       </Table>
       <Panel>
         <Form formValue={{ studentName, studentDOB, studentGender }}>
@@ -92,7 +92,7 @@ const StudentList = (props) => {
               style={{ width: '20%' }}
             />
           </div>
-          <div>
+          {/* <div>
             <br />
             <h5>Classes</h5>
             <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
@@ -110,7 +110,7 @@ const StudentList = (props) => {
                 </label>
               ))}
             </div>
-          </div>
+          </div> */}
           <div>
             <Button appearance="primary" onClick={handleCreateStudent}>
               Add Student

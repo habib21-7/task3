@@ -15,22 +15,22 @@ import './App.css';
 
 const App = () => {
 
-  const [classesNum, setClassesNum] = useState(0);
+  //const [classesNum, setClassesNum] = useState(0);
   const [studentsNum, setStudentsNum] = useState(0);
 
-  const [classes, setClasses] = useState([]);
+  //const [classes, setClasses] = useState([]);
   const [students, setStudents] = useState([]);
 
 
-  const handleCreateClass = (newClass) => {
-    if (newClass) {
-      const newClassObj = { 
-        id: classes.length + 1, name: newClass 
-      };
-      setClasses([...classes, newClassObj]);
-      setClassesNum(classesNum + 1);
-    }
-  };
+  // const handleCreateClass = (newClass) => {
+  //   if (newClass) {
+  //     const newClassObj = { 
+  //       id: classes.length + 1, name: newClass 
+  //     };
+  //     setClasses([...classes, newClassObj]);
+  //     setClassesNum(classesNum + 1);
+  //   }
+  // };
 
   const handleCreateStudent = (newStudent) => {
     if (newStudent) {
@@ -106,9 +106,9 @@ const App = () => {
           <Content>
             <Routes>
               <Route path='/layout' element={<Layout />}>
-                <Route path='homepage' element={<HomePage createdClasses={handleCreateClass} classesNumber={classesNum} studentsNumber={studentsNum}/>}/>
-                <Route path='classes' element={<ClassDefinition createdClasses={handleCreateClass} classesNumber={classesNum} classes={classes}/>} />
-                <Route path='students' element={<StudentList createdStudents={handleCreateStudent} studentsNumber={studentsNum} students={students} classes={classes}/>} />
+                <Route path='homepage' element={<HomePage  studentsNumber={studentsNum}/>}/>
+                <Route path='classes' element={<ClassDefinition />} />
+                <Route path='students' element={<StudentList createdStudents={handleCreateStudent} studentsNumber={studentsNum} students={students} />} />
               </Route>
             </Routes>
           </Content>

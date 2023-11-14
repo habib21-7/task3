@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import { Input,Button} from 'rsuite';
 import 'rsuite/dist/rsuite.min.css';
+import { useSelector,useDispatch } from 'react-redux';
+import { setClassDefintion } from './classSlice';
 
-const ClassDefinition = (props) => {
+const ClassDefinition = () => {
   
+  const classSlice = useSelector((state) => state.classSlice);
+  const dispatch = useDispatch();
   const [newClass, setNewClass] = useState("");
-  
+
 
   const handleAddClass = () => {
-    if (newClass) {
-      props.createdClasses(newClass);
-      setNewClass("");
-    }
+    dispatch(setClassDefintion(newClass));
+    setNewClass("");
   }
 
 
@@ -20,13 +22,13 @@ const ClassDefinition = (props) => {
       <div>
         <h2>Classes List</h2>
         <ul style={{ listStyle: "none", padding: 0 ,fontSize:"20px"}}>
-          {props.classes.map((classInfo) => (
-            <li key={classInfo.id} style={{ display: 'flex', margin: '10px' }}>
-              <span><strong>{classInfo.id}</strong></span>
-              <span>.</span>
-              <span><strong>{classInfo.name}</strong> </span>
+          {/* {classSlice.map((classInfo) => ( */}
+            <li key={classSlice.id+1} style={{ display: 'flex', margin: '10px' }}>
+             {/* <span><strong>{classInfo.id}</strong></span>
+              <span>.</span> */}
+              <span><strong>{classSlice.name}</strong> </span>
             </li>
-          ))}
+          {/* // ))} */}
         </ul>
       </div>
       <div style={{ display: 'flex', alignItems: 'center' }}>
