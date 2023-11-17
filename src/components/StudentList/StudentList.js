@@ -202,7 +202,7 @@ const StudentList = () => {
                 </div>
               ))
             ) : (
-              <div>No classes for the student {selectedStudentName}.</div>
+              <div>No classes for "{selectedStudentName}"</div>
             )}
           </Modal.Body>
           <Modal.Footer>
