@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export const studentSlice = createSlice({
+const studentSlice = createSlice({
   name: 'studentSlice',
   initialState: {
     students: [],
@@ -23,6 +23,5 @@ export const studentSlice = createSlice({
   },
 });
 
-export const { addStudent, editStudent, deleteStudent } = studentSlice.actions;
-
+export const { addStudent, editStudent, deleteStudent, addGrade } = studentSlice.actions;
 export default studentSlice.reducer;
